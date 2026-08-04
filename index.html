@@ -249,12 +249,14 @@ h2.head {
 .metric-l { font-size: 0.73rem; color: var(--fg-3); margin-top: 5px; line-height: 1.4; }
 
 .hero-side { display: flex; flex-direction: column; gap: 0.9rem; }
+/* Frame matches the source photo's portrait aspect (359x449) so `cover`
+   has almost nothing to crop — a square frame cut off the top of the head. */
 .face {
-  width: 92px; height: 92px; border-radius: 20px; overflow: hidden;
+  width: 100px; height: 120px; border-radius: 16px; overflow: hidden;
   border: 1px solid var(--line-2); background: var(--surface-2);
   box-shadow: var(--shadow);
 }
-.face img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.face img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 18%; display: block; }
 .focus-card {
   background: var(--surface); border: 1px solid var(--line); border-radius: var(--r);
   padding: 0.95rem 1.15rem; display: flex; gap: 0.9rem; align-items: flex-start;
@@ -320,8 +322,10 @@ h2.head {
   border: 1px solid color-mix(in srgb, var(--teal) 26%, transparent); margin-left: 8px; vertical-align: 2px;
 }
 ul.bullets { list-style: none; margin-top: 0.9rem; display: flex; flex-direction: column; gap: 9px; }
-ul.bullets li { display: flex; gap: 11px; font-size: 0.885rem; color: var(--fg-2); line-height: 1.65; }
-ul.bullets li::before { content: '▹'; color: var(--accent); font-size: 0.75rem; line-height: 1.9; flex-shrink: 0; }
+/* Block, not flex: a flex li turns every inline <b> into its own flex item,
+   which breaks bold phrases out of the text flow. Marker is positioned instead. */
+ul.bullets li { position: relative; padding-left: 21px; font-size: 0.885rem; color: var(--fg-2); line-height: 1.65; }
+ul.bullets li::before { content: '▹'; position: absolute; left: 0; top: 0; color: var(--accent); font-size: 0.75rem; line-height: 1.9; }
 ul.bullets b { color: var(--fg); font-weight: 550; }
 
 /* ═══════════ SKILLS ═══════════ */
@@ -413,8 +417,8 @@ ul.bullets b { color: var(--fg); font-weight: 550; }
 .sim-body.on { grid-template-rows: 1fr; }
 .sim-body > div { overflow: hidden; }
 .sim-list { list-style: none; display: flex; flex-direction: column; gap: 9px; border-top: 1px solid var(--line); margin: 0 1.3rem; padding: 1rem 0 1.25rem; }
-.sim-list li { display: flex; gap: 10px; font-size: 0.845rem; color: var(--fg-2); line-height: 1.6; }
-.sim-list li::before { content: '\f058'; font-family: 'Font Awesome 6 Free'; font-weight: 900; color: var(--teal); font-size: 0.72rem; line-height: 1.9; flex-shrink: 0; }
+.sim-list li { position: relative; padding-left: 22px; font-size: 0.845rem; color: var(--fg-2); line-height: 1.6; }
+.sim-list li::before { content: '\f058'; position: absolute; left: 0; top: 0; font-family: 'Font Awesome 6 Free'; font-weight: 900; color: var(--teal); font-size: 0.72rem; line-height: 1.9; }
 
 /* ═══════════ CONTACT ═══════════ */
 .contact { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 5vw, 4rem); margin-top: 3rem; align-items: start; }
@@ -557,7 +561,7 @@ footer {
             <div class="metric-l">Production releases verified as sole tester</div>
           </div>
           <div class="metric">
-            <div class="metric-n">2</div>
+            <div class="metric-n">7</div>
             <div class="metric-l">Government platforms supported</div>
           </div>
           <div class="metric">
@@ -568,7 +572,7 @@ footer {
       </div>
 
       <div class="hero-side">
-        <div class="face"><img src="assets/atul-avatar.jpeg" alt="Portrait of Atul Saini" width="92" height="92" loading="eager"></div>
+        <div class="face"><img src="assets/atul-avatar.jpeg" alt="Portrait of Atul Saini" width="100" height="120" loading="eager"></div>
         <div class="focus-card">
           <div class="focus-ico i-amber"><i class="fas fa-user-lock" aria-hidden="true"></i></div>
           <div>
